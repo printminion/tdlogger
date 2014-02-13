@@ -1,11 +1,22 @@
+import sys
+import traceback
+
 __author__ = 'cr'
 
 from tdlogger import tdlogger
 import settings
 
 logger = tdlogger('host1', settings.LOG_SERVER_IP, settings.LOG_SERVER_PORT)
+#put session data here
+logger.session = {'remote_host': '<REMOTE_HOST>'}
+
+logger.info('hallo world')
+logger.warning('hallo world', {'user_id': 1111111, 'headers': ['Content-Type: application/json'], 'otherdata': 'yey!'})
+
+try:
+   run_my_stuff()
+except:
+    logger.exception('Got exception on main handler', {'traceback': traceback.format_exc()})
+    pass
 
 
-logger.info('hallo world', 'info message')
-logger.warning('hallo world', 'warning message')
-logger.fatal('hallo world', 'fatal message')
