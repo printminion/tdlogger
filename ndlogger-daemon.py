@@ -9,6 +9,7 @@ import socket
 
 import settings
 from pymongo import MongoClient
+from bson import json_util
 
 bufferSize = 1024  # whatever you need
 
@@ -37,7 +38,7 @@ while True:
     #print '%s ----> %s' % (len(msg), msg)
     print '[>]%s bytes' % len(msg)
 
-    data = json.loads(msg)  # here we can loose time
+    data = json.loads(msg, object_hook=json_util.object_hook)  # here we can loose time
     print '%s' % data
     print '[%s]%s\t%s' % (data['level'][0:1], data['timestamp'], data['message'])
 

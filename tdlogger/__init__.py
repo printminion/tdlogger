@@ -4,6 +4,7 @@ import sys
 import json
 import inspect
 import datetime
+from bson import json_util
 
 from socket import *
 from tdlogger import metadata
@@ -39,7 +40,7 @@ class tdlogger:
         cs.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
         cs.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)
 
-        MESSAGE = {'timestamp': str(datetime.datetime.utcnow()),
+        MESSAGE = {'timestamp': datetime.datetime.now(),
                    'source': source,
                    'level': level,
                    'message': message,
@@ -50,7 +51,7 @@ class tdlogger:
                    }
 
         try:
-            obj = json.dumps(MESSAGE)
+            obj = json.dumps(MESSAGE, default=json_util.default)
             #obj = cPickle.dumps(MESSAGE) #53 bytes more than json object
 
             cs.sendto(obj, (self._LOG_SERVER_IP, self._LOG_SERVER_PORT))
