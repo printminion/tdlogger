@@ -4,7 +4,7 @@ app.factory('Message', function($http) {
 
   function getUrl(id) {
     id = typeof id !== 'undefined' ? id : '';
-    return 'http://127.0.0.1:8000/api/messages/' + id + '?format=json';
+    return '/api/messages/' + id + '?format=json';
   }
 
   return {
