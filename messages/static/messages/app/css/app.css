@@ -37,3 +37,7 @@ table.messages tr td {
 .highlighted {
     color: #285e8e;
 }
+
+.message {
+    zoom: 90%;
+}

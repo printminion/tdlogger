@@ -1,43 +1,40 @@
-<div id="row">
+<div id="message-id" style="display: none;">{{ message.id }}</div>
 
-    <div id="message-id" style="display: none;">{{ message.id }}</div>
+<div id="messages-show">
+    <h2>Message <span class="highlighted">{{ message.id }}</span></h2>
 
-    <div id="messages-show">
-        <h2>Message <span class="highlighted">{{ message.id }}</span></h2>
+    <p class="messages-show-message">{{ message.message }}</p>
 
-        <p class="messages-show-message">{{ message.message }}</p>
+    <h4>From: <span class="highlighted">{{ message.source }}</span></h4>
+    <h4>Received: <span class="highlighted">{{ message.timestamp | date:'dd.MM.yyyy - HH:mm:ss' }}</span></h4>
 
-        <h4>From: <span class="highlighted">{{ message.source }}</span></h4>
-        <h4>Received: <span class="highlighted">{{ message.timestamp | date:'dd.MM.yyyy - HH:mm:ss'}}</span></h4>
+    <h4>Local time: <span class="highlighted">{{ message.timestamp | date:'dd.MM.yyyy - HH:mm:ss' }}</span></h4>
 
-        <h4>Local time: <span class="highlighted">{{ message.timestamp | date:'dd.MM.yyyy - HH:mm:ss'}}</span></h4>
+    <h4>Severity: <span class="highlighted">{{ message.level }}</span></h4>
 
-        <h4>Severity: <span class="highlighted">{{ message.level }}</span></h4>
-        <h4>Facility: <span class="highlighted">ftk6shop</span></h4>
+    <h4>File: <span class="highlighted">{{ message.filename }}:{{ message.line_number }}</span></h4>
 
-        <h4>File: <span class="highlighted">{{ message.filename }}:{{ message.line_number }}</span></h4>
+    <h3>Session data:</h3>
 
+    <h4 ng-repeat="(key,value) in message.session">{{ key }}: <span class="highlighted">{{ value }}</span></h4>
 
-
-        <h4 ng-repeat="(key,value) in message.session">{{ key }}: <span class="highlighted">{{ value }}</span></h4>
-
-        <h3>Full message:</h3>
+    <h3>Full message:</h3>
 
 
-        <div class="messages-show-message messages-full-message">
-            <div ng-repeat="(key,value) in message.payload">{{ key }}: <span class="highlighted">{{ value }}</span></div>
-        </div>
+    <div class="messages-show-message messages-full-message">
+        <div ng-repeat="(key,value) in message.payload">{{ key }}: <span class="highlighted">{{ value }}</span></div>
+    </div>
 
-        <!-- h3>Filed in following streams:</h3>
+    <!-- h3>Filed in following streams:</h3>
         <ul id="message-referenced-streams">
             <li><a href="#/streams/{{message.source}}">{{message.source}}</a></li>
         </ul -->
 
 
-        <br>
-        <a href="#/messages/{{message.id}}/around?nb=50" class="awesome">Show messages of this host around</a>
-        <a href="#/messages/{{message.id}}" class="awesome">Permalink</a>
-
-    </div>
+    <br>
+    <!--
+    <a href="#/messages/{{ message.id }}/around?nb=50" class="awesome">Show messages of this host around</a>
+    -->
+    <a href="#/messages/{{ message.id }}" class="awesome">Permalink</a>
 
 </div>
