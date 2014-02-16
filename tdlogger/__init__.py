@@ -47,7 +47,7 @@ class tdlogger:
                    'message': message,
                    'filename': filename,
                    'line_number': line_number,
-                   'session': self.session,
+                   'session':  self.session,
                    'payload': msgFull
                    }
 

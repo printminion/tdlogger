@@ -36,7 +36,7 @@ print "[i]count messages by type: %s" % \
 print "[i]get messages for specific day:"
 
 d = datetime.datetime(2014, 2, 15)
-for message in messages.find({"timestamp": {"$gte": d}, "source": "host1"}).sort("timestamp"):
+for message in messages.find({"timestamp": {"$gte": d}, "source": "host1"}).sort([("timestamp", -1)]):
     print message
 
 # def get(post_id):

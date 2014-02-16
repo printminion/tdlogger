@@ -44,7 +44,7 @@ app.controller('MessageListController', function($scope, $location, Message) {
 app.controller('MessageDetailController',
     function($scope, $routeParams, Message) {
   Message.get($routeParams.messageId, function(data) {
-    $scope.message = data;
+    $scope.message = data[0];
   });
 });
 

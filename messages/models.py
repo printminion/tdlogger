@@ -1,6 +1,4 @@
 from django.db import models
-from djangotoolbox.fields import ListField
-from djangotoolbox.fields import DictField
 
 
 class Message(models.Model):
@@ -13,8 +11,8 @@ class Message(models.Model):
     filename = models.CharField(max_length=255)
     line_number = models.IntegerField()
 
-    payload = DictField()
-    session = DictField()
+    payload = models.TextField()
+    session = models.TextField()
 
     def __str__(self):
         return self.timestamp
