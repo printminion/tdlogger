@@ -1,15 +1,23 @@
 tdlogger
 ========
 
-# Install requirements
+* Install requirements
 ```shell
 pip install -r requirements.txt
 ```
-#start daemon
+* Edit settings.py to change your UDP post and mongoDB host/port
+* Start logger daemon (UDP socket on port 27017)
 ```shell
 ndlogger-daemon.py
 ```
+* Run ./tests/testErrors.py to emulate some logging output
+* Run ./tests/readDb.py to check data in database
+* Start webserver
+```shell
+python manage.py runserver
+```
 
+* Goto http://127.0.0.1:8000/
 
 Usage
 ======

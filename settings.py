@@ -1,11 +1,9 @@
-__author__ = 'cr'
 
-
-#LOG_SERVER_IP = '192.168.178.33'
 LOG_SERVER_IP = '127.0.0.1'
 LOG_SERVER_PORT = 53005
 
 
+#mongodb configuration
 LOG_SERVER_DB_HOST = '127.0.0.1'
 LOG_SERVER_DB_PORT = 27017
 LOG_SERVER_DB_NAME = 'tdlogger'
