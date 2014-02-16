@@ -1,4 +1,5 @@
-
+import datetime
+import json
 import settings
 from bson import ObjectId
 from django.shortcuts import render
@@ -72,6 +73,41 @@ def message_detail(request, pk):
         messages.append(message)
     serializedList = MessageFullSerializer(messages, many=True)
     return Response(serializedList.data)
+
+
+@csrf_exempt
+@api_view(['POST'])
+def messages_since(request):
+    """
+        get messages count since date
+    """
+
+    if request.method != 'POST':
+        return Response({"ok": "false"})
+
+    if request._content_type != 'application/json':
+        return Response({"ok": "false"})
+
+
+    try:
+        content = json.loads(request._post['_content'])
+        print content
+        since = content['since']
+        print since
+
+        d = datetime.datetime.fromtimestamp(since / 1e3)
+    except:
+        return Response({"ok": "false"})
+
+    #connect to mongodb
+    db = Connection(settings.LOG_SERVER_DB_HOST, settings.LOG_SERVER_DB_PORT)
+    dbconn = db[settings.LOG_SERVER_DB_NAME]
+
+    messagesCollection = dbconn['messages']
+
+    #count = messagesCollection.find({"timestamp": {"$gte": d}, "source": "host1"}).count()
+    count = messagesCollection.find({"timestamp": {"$gte": d}}).count()
+    return Response({'payload': count, 'ok': 'true'})
 
 
 class MessageViewSet(viewsets.ModelViewSet):

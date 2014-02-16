@@ -29,3 +29,11 @@ body {
   margin-top: 30px;
   padding-top: 19px;
 }
+
+table.messages tr td {
+    cursor: pointer;
+}
+
+.highlighted {
+    color: #285e8e;
+}

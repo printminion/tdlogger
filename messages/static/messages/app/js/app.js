@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('tdloggerApp', []);
+var app = angular.module('tdloggerApp', ['ngRoute']);
 
 app.config(function ($routeProvider) {
   $routeProvider
@@ -22,5 +22,5 @@ app.config(function ($routeProvider) {
       {
         templateUrl: 'static/messages/app/partials/about.html'
       })
-    .otherwise({ redirectTo: '/home' });
+    .otherwise({ redirectTo: '/messages' });
 });

@@ -39,6 +39,9 @@ while True:
     print '[>]%s bytes' % len(msg)
 
     data = json.loads(msg, object_hook=json_util.object_hook)  # here we can loose time
+
+    #data['hour'] = data['timestamp']
+
     print '%s' % data
     print '[%s]%s\t%s' % (data['level'][0:1], data['timestamp'], data['message'])
 
