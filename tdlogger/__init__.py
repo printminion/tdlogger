@@ -4,9 +4,10 @@ import sys
 import json
 import inspect
 import datetime
+from socket import *
+
 from bson import json_util
 
-from socket import *
 from tdlogger import metadata
 
 
