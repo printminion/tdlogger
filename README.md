@@ -123,6 +123,25 @@ logger.warning('hallo world', {'user_id': 1111111, 'headers': ['Content-Type: ap
 
 ]
 ```
+GET /api/status/?format=json
+----------------
+Response:
+```javascript
+{
+    "ok": "true",
+    "payload": {
+        "total": "15",
+        "messages": [
+            ["time", 0],
+            ["19:00", 1],
+            ["20:00", 13]
+        ],
+        "last10minutes": "0"
+    }
+}
+```
+
+
 POST /api/messages/getnewmessagecount/?format=json
 --------------------------------------------------
 Request:
