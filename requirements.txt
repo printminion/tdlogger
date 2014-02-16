@@ -1,0 +1,11 @@
+# Python 2.7 compatibility
+# argparse==1.2.1
+bson
+pymongo==2.4.1
+django==1.6.2
+djangorestframework==2.3.12
+git+https://github.com/django-nonrel/django@nonrel-1.5
+git+https://github.com/django-nonrel/djangotoolbox
+git+https://github.com/django-nonrel/mongodb-engine
+
+

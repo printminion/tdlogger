@@ -1,0 +1,32 @@
+# Runtime requirements
+--requirement requirements.txt
+
+# Testing
+pytest==2.5.1
+py==1.4.19
+mock==1.0.1
+
+# Linting
+flake8==2.1.0
+mccabe==0.2.1
+pep8==1.4.6
+pyflakes==0.7.3
+
+# Documentation
+Sphinx==1.2
+docutils==0.11
+Jinja2==2.7.1
+MarkupSafe==0.18
+Pygments==1.6
+
+# Miscellaneous
+Paver==1.2.1
+colorama==0.2.7
+#pymongo==2.6.3
+pymongo==2.4.1
+
+django==1.6.2
+djangorestframework==2.3.12
+git+https://github.com/django-nonrel/django@nonrel-1.5
+git+https://github.com/django-nonrel/djangotoolbox
+git+https://github.com/django-nonrel/mongodb-engine
