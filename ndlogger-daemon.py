@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 
 import json
-
-__author__ = 'cr'
-
 import select
 import socket
 
@@ -40,9 +37,9 @@ while True:
 
     data = json.loads(msg, object_hook=json_util.object_hook)  # here we can loose time
 
-    #data['hour'] = data['timestamp']
 
-    print '%s' % data
+    data['hour'] = data['timestamp'].hour
+
     print '[%s]%s\t%s' % (data['level'][0:1], data['timestamp'], data['message'])
 
     post_id = addToDB(data)

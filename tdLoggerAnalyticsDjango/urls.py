@@ -19,6 +19,8 @@ urlpatterns = patterns(
     url(r'^auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     url(r'^api/messages/$', 'messages.views.message_list', name='message_list'),
+    url(r'^api/status/$', 'messages.views.tclogger_status', name='tclogger_status'),
+
     url(r'^api/messages/(?P<pk>[^/]+)/$', 'messages.views.message_detail', name='message_detail'),
 
     url(r'^api/messages/getnewmessagecount$', 'messages.views.messages_since', name='messages_since'),

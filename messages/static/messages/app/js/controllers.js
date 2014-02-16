@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('MessageListController', function ($scope, $location, Message) {
+app.controller('MessageListController', function ($scope, $location, Message, Status) {
     var page_size = 6;
 
     Array.prototype.chunk = function (page_size) {
@@ -44,6 +44,11 @@ app.controller('MessageListController', function ($scope, $location, Message) {
             $scope.next_page_url = '#/messages?page=' + $scope.next_page;
         }
         $scope.message_rows = data.chunk(100);
+    });
+
+    Status.get(undefined, function (data) {
+        $scope.status = data.payload;
+        drawVisualization(data.payload.messages);
     });
 });
 
